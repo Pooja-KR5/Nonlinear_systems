@@ -1,0 +1,38 @@
+clc;
+clear all;
+close all;
+% Define the range for x1 and x2
+x1 = linspace(-10, 10, 100); % 100 points from -10 to 10 for x1
+x2 = linspace(-10, 10, 100); % 100 points from -10 to 10 for x2
+
+% Create a meshgrid for the ranges of x1 and x2
+[X1, X2] = meshgrid(x1, x2);
+
+% Calculate the values of the first function
+F1 = -X1.^2 - X2.^2 - (X1 + 2*X2).^2 .* (1 - X2.^2);
+
+% Calculate the values of the second function
+F2 = (3/2)*X1.^2 + X1.*X2 + X2.^2 - 0.833;
+
+F3= (3/2)*X1.^2 + X1.*X2 + X2.^2 - 1.5;
+% Plot the first function using contour
+contour(X1, X2, F1, 'LineColor','g' )
+hold on % Retain the current plot
+
+% Plot the second function using contour
+contour(X1, X2, F2, 'LineColor','r' )
+contour(X1, X2, F3, 'LineColor','b')
+
+% Plot the line x2 = 1
+plot(x1, ones(size(x1)), 'm')
+
+% Plot the line x2 = -1
+plot(x1, -ones(size(x1)), 'm')
+
+
+
+
+% Add legend
+legend('vdot(x)=0', 'V(x)<0.833', 'V(x)<1.5','x2=1', 'x2=-1')
+
+hold off % Release the plot hold
